@@ -1,0 +1,26 @@
+# STM32CubeIDE / Eclipse project files
+/.metadata/
+/.build/
+/Debug/
+/Release/
+*.launch
+*.log
+
+# Object files / build
+/*.o
+/*.d
+/*.elf
+/*.map
+/*.bin
+
+# IDE specific
+.project
+.cproject
+.settings/
+
+# Mac / Windows
+.DS_Store
+Thumbs.db
+
+# Generated X-CUBE-AI / model output — keep if you want them in repo but often large:
+# /X-CUBE-AI/App/*.o
