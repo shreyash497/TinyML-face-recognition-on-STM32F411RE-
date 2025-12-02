@@ -1,0 +1,24 @@
+
+## Files of interest
+- `Core/Src/main.c` — main loop and ai init/run.
+- `X-CUBE-AI/App/` — Cube.AI runtime + generated model files.
+- `img.h` — embedded test image (INT8).
+- `network_*.c / .h` — generated model API (names may vary).
+---
+## How the model is run (summary)
+1. Model created and quantized to INT8 (TFLite).
+2. Converted by STM32Cube.AI → C code and weights.
+3. In `main.c`: model is initialized (ai_network_*_init) and activations allocated.
+4. Input buffer is filled from `img.h`.
+5. `ai_network_run()` is called and outputs are searched for the maximum class.
+---
+## Add your own image
+1. Preprocess image to same size and quantization used for training (grayscale → 32×32 or 96×96 depending on model).
+2. Convert to signed INT8 values (range -128..127) and replace array in `img.h`.
+3. Rebuild and flash.
+---
+## Demo / serial output
+The firmware prints prediction index and score to UART (115200 baud). Map index to label names in `main.c` (or create a `labels[]` array).
+
+
+
